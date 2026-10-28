@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ScamShield AI - Accessible, Elder-First Cyber Defense and Scam Classification System against Digital Arrest, Fake KYC, and UPI Extortion.">
+    <meta name="theme-color" content="#1E40AF">
+    <title>ScamShield AI | Elder Fraud Defense & Deception Analysis System</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Accessibility Skip to Main Content Link -->
+    <a href="#mainAppLayout" class="skip-to-content">Skip to Main Content</a>
+
+    <!-- Top Emergency Ribbon -->
+    <aside class="emergency-ribbon" aria-label="Emergency Cyber Helpline Banner">
+        <div class="container ribbon-flex">
+            <span class="ribbon-text">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
+                <strong>National Cyber Emergency:</strong> Dial <strong>1930</strong> for immediate financial freeze or report at <strong>cybercrime.gov.in</strong>
+            </span>
+            <div class="ribbon-right">
+                <span class="internship-tag"><i class="fa-solid fa-award" aria-hidden="true"></i> IBM SkillsBuild AICTE Internship | Deliverable 2</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Navigation Header -->
+    <header class="navbar" role="banner">
+        <div class="container nav-content">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                    <h1 class="brand-title">ScamShield <span>AI</span></h1>
+                    <p class="brand-subtitle">Elder Defense Against Digital Arrest, Coercive Police Extortion & UPI Fraud</p>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <!-- Elder Accessibility Toolbar -->
+                <div class="accessibility-controls" role="toolbar" aria-label="Elder Accessibility Controls">
+                    <span class="acc-label"><i class="fa-solid fa-universal-access" aria-hidden="true"></i> View:</span>
+                    <button id="fontDecBtn" class="btn-acc" aria-label="Decrease text size" title="Smaller text">A-</button>
+                    <button id="fontResetBtn" class="btn-acc" aria-label="Reset normal text size" title="Standard text">A</button>
+                    <button id="fontIncBtn" class="btn-acc" aria-label="Enlarge text size for elders" title="Larger text for seniors">A+</button>
+                    <button id="contrastToggleBtn" class="btn-acc btn-contrast" aria-label="Toggle high contrast accessibility mode" title="High Contrast Mode">
+                        <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span class="contrast-text">Contrast</span>
+                    </button>
+                </div>
+
+                <div class="sdg-badges" aria-label="United Nations Sustainable Development Goals">
+                    <span class="badge badge-sdg16" title="UN SDG 16: Peace, Justice and Strong Institutions"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> SDG 16: Justice</span>
+                    <span class="badge badge-sdg10" title="UN SDG 10: Reduced Inequalities - Empowering Elders"><i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i> SDG 10: Elders</span>
+                </div>
+
+                <button id="groqSettingsBtn" class="btn-groq-settings" aria-haspopup="dialog" title="Configure Groq Cloud API Key & Models">
+                    <span id="headerGroqDot" class="groq-dot offline"></span>
+                    <i class="fa-solid fa-bolt" aria-hidden="true"></i> <span id="headerGroqText">Groq AI Setup</span>
+                </button>
+
+                <button id="panicBtn" class="btn-panic" aria-haspopup="dialog" title="Simulate emergency caregiver SOS dispatch">
+                    <i class="fa-solid fa-bell fa-shake" aria-hidden="true"></i> <span>🚨 ELDER PANIC SHIELD</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sub-Navbar View Switcher (Main Dashboard, Call Interceptor, OSINT Lookup, Practice Lab, AI Companion) -->
+    <nav class="sub-navbar" aria-label="Application View Switcher">
+        <div class="container sub-nav-content">
+            <button class="nav-view-btn active" data-view="viewScanner">
+                <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> <span>1. Live AI Deception Scanner</span>
+            </button>
+            <button class="nav-view-btn" data-view="viewCallInterceptor">
+                <i class="fa-solid fa-phone-volume" aria-hidden="true"></i> <span>2. 🚨 Virtual Call Interceptor Demo</span>
+            </button>
+            <button class="nav-view-btn" data-view="viewThreatLookup">
+                <i class="fa-solid fa-shield-virus" aria-hidden="true"></i> <span>3. 🔍 Cyber Threat OSINT Lookup</span>
+            </button>
+            <button class="nav-view-btn" data-view="viewPracticeLab">
+                <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> <span>4. 🎓 Elder Defense Practice Lab</span>
+            </button>
+            <button class="nav-view-btn" data-view="viewAiCompanion">
+                <i class="fa-solid fa-comments" aria-hidden="true"></i> <span>5. 💬 Ask ScamShield AI Companion</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- National Cyber Threat Advisory Ticker Bar -->
+    <div class="threat-ticker-bar" role="marquee" aria-label="National Cyber Fraud Advisories">
+        <div class="ticker-badge"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> I4C / 1930 ALERTS</div>
+        <div class="ticker-content" id="alertsTicker">
+            <span>🚨 <strong>Digital Arrest Alert:</strong> Real Indian Police / CBI never arrest anyone over Skype/WhatsApp video call • ⚡ <strong>Electricity Cutoff Alert:</strong> Discoms do not send SMS from personal 10-digit mobile numbers • 🏦 <strong>UPI Golden Rule:</strong> Never enter UPI PIN to receive refunds or money • 📞 <strong>Report Cyber Fraud:</strong> Dial 1930 immediately or visit cybercrime.gov.in</span>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <main id="mainAppLayout" class="container app-layout" role="main">
+        
+        <!-- ===================================================================
+             VIEW 1: LIVE SCANNER & AGENT SWARM (Default Main View)
+             =================================================================== -->
+        <div id="viewScanner" class="view-panel active">
+            <!-- Left / Top Column: Input & Quick Test -->
+            <section class="card input-card" aria-labelledby="scannerHeading">
+                <div class="card-header">
+                    <h2 id="scannerHeading"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Live Indic Deception Scanner</h2>
+                    <div class="header-badges">
+                        <span class="pill-info">Hindi • English • Hinglish • Marathi</span>
+                        <span class="pill-voice"><i class="fa-solid fa-volume-high" aria-hidden="true"></i> Trilingual Voice Audio</span>
+                    </div>
+                </div>
+                <p class="card-desc">Scan suspicious SMS, WhatsApp forwards, call transcripts, or legal notices in real time to unmask social engineering and safeguard senior citizens.</p>
+
+                <!-- Quick Load Scenarios -->
+                <div class="quick-scenarios" role="group" aria-label="Quick test preset scenarios">
+                    <label class="scenario-label"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Quick-Load Real-World Scenarios (Click to test):</label>
+                    <div class="scenario-buttons">
+                        <button class="btn-scenario active" data-scenario="digital_arrest" aria-pressed="true"><i class="fa-solid fa-user-ninja" aria-hidden="true"></i> 🚨 Digital Arrest (FedEx)</button>
+                        <button class="btn-scenario" data-scenario="call_transcript" aria-pressed="false"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> 🎙️ CBI Call Transcript</button>
+                        <button class="btn-scenario" data-scenario="electricity" aria-pressed="false"><i class="fa-solid fa-plug-circle-xmark" aria-hidden="true"></i> ⚡ Electricity Cut (Hindi)</button>
+                        <button class="btn-scenario" data-scenario="marathi_power" aria-pressed="false"><i class="fa-solid fa-bolt" aria-hidden="true"></i> ⚡ महावितरण वीज बिल (Marathi)</button>
+                        <button class="btn-scenario" data-scenario="kyc" aria-pressed="false"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> 🏦 Fake SBI YONO KYC</button>
+                        <button class="btn-scenario" data-scenario="telegram" aria-pressed="false"><i class="fa-brands fa-telegram" aria-hidden="true"></i> 💼 Telegram Task Fraud</button>
+                        <button class="btn-scenario" data-scenario="kbc" aria-pressed="false"><i class="fa-solid fa-gift" aria-hidden="true"></i> 🎁 KBC Lottery ₹25L</button>
+                        <button class="btn-scenario" data-scenario="safe_bank" aria-pressed="false"><i class="fa-solid fa-shield-check" aria-hidden="true"></i> ✅ Genuine Bank Alert (Safe)</button>
+                    </div>
+                </div>
+
+                <!-- Message Input Area with Speech-to-Text Button -->
+                <div class="form-group">
+                    <div class="textarea-header">
+                        <label for="messageInput"><strong>Suspicious Message or Call Transcript Text:</strong></label>
+                        <div class="header-tools">
+                            <span id="inputCounters" class="input-counters" aria-live="polite">0 chars • 0 words</span>
+                            <button id="voiceInputBtn" class="btn-voice-input" aria-label="Dictate message using microphone in Hindi, English, or Marathi">
+                                <i class="fa-solid fa-microphone" aria-hidden="true"></i> <span>Speak (वॉइस बोलें)</span>
+                            </button>
+                            <button id="uploadAudioBtn" class="btn-voice-input btn-audio-upload" aria-label="Upload recorded call or WhatsApp audio file" title="Upload audio recording (.wav, .mp3, .m4a)">
+                                <i class="fa-solid fa-file-audio" aria-hidden="true"></i> <span>Upload Audio Note</span>
+                            </button>
+                            <input type="file" id="audioFileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="textarea-wrapper">
+                        <textarea id="messageInput" rows="5" placeholder="Type, paste suspicious message, or click 'Speak' to dictate (e.g. 'Aapke bijli ka bill update nahi hua hai, aaj raat connection kat diya jayega...')..." aria-label="Suspicious message input"></textarea>
+                        
+                        <!-- Shimmer Scanning Overlay for Visual Feedback -->
+                        <div id="scanningOverlay" class="scanning-shimmer" style="display: none;" aria-live="assertive">
+                            <div class="scanner-laser" aria-hidden="true"></div>
+                            <div class="shimmer-text">
+                                <i class="fa-solid fa-brain fa-fade" aria-hidden="true"></i>
+                                <span>Analyzing Indic linguistics, cognitive fear triggers & OSINT artifacts...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="listeningIndicator" class="listening-bar" style="display: none;" role="status" aria-live="polite">
+                        <span class="pulsing-dot" aria-hidden="true"></span> 
+                        <span id="listeningText">Listening... Speak now into your microphone in Hindi, English, or Marathi</span>
+                    </div>
+
+                    <div id="audioUploadingBar" class="listening-bar audio-transcribing-bar" style="display: none;" role="status" aria-live="polite">
+                        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+                        <span id="audioUploadingText">Transcribing call audio note using Groq Whisper Large v3...</span>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button id="scanBtn" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass-waveform" aria-hidden="true"></i> Run AI Deception Scan</button>
+                    <button id="clearBtn" class="btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left" aria-hidden="true"></i> Clear Text</button>
+                </div>
+            </section>
+
+            <!-- Live Threat Dashboard -->
+            <section id="resultsSection" class="results-container" aria-live="polite" aria-labelledby="threatDashboardTitle">
+                <!-- Threat Meter & Modus Operandi Card -->
+                <div class="card threat-summary-card">
+                    <div class="threat-grid">
+                        <div class="threat-meter-box">
+                            <div class="radial-gauge" id="radialGauge" role="progressbar" aria-valuenow="96.8" aria-valuemin="0" aria-valuemax="100" aria-label="Scam Threat Score">
+                                <div class="gauge-inner">
+                                    <span id="scamPercent" class="gauge-value">96.8%</span>
+                                    <span class="gauge-label">Threat Score</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="threat-details">
+                            <div class="threat-badge-row">
+                                <span id="threatBadge" class="badge-threat badge-danger">🚨 CRITICAL THREAT DETECTED</span>
+                                <span id="detectedLang" class="badge-lang">Hinglish / Indic NLP</span>
+                                <span id="threatLevelTag" class="badge-tag">High Coercion</span>
+                            </div>
+                            
+                            <h3 id="scamModusTitle" class="scam-title">Digital Arrest & Fake Law Enforcement Extortion</h3>
+                            
+                            <p id="threatAdviceBanner" class="threat-banner danger-banner" role="alert">
+                                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                                <span id="bannerTextContent">CRITICAL WARNING: Indian Law Enforcement (Police, CBI, Customs, Court) NEVER conducts arrests or judicial trials over WhatsApp/Skype video calls. Do not panic and do not transfer money!</span>
+                            </p>
+                            
+                            <!-- Trilingual Voice Alert Player for Elders -->
+                            <div class="voice-controls" role="group" aria-label="Elder Voice Advisories">
+                                <span class="voice-label"><i class="fa-solid fa-ear-listen" aria-hidden="true"></i> <strong>Audio Voice Warnings:</strong></span>
+                                <div class="voice-buttons-group">
+                                    <button id="playHindiBtn" class="btn-voice btn-voice-hindi" aria-label="Play audio advisory in Hindi">
+                                        <i class="fa-solid fa-volume-high" aria-hidden="true"></i> हिंदी में सुनें (Hindi)
+                                    </button>
+                                    <button id="playEnglishBtn" class="btn-voice btn-voice-english" aria-label="Play audio advisory in English">
+                                        <i class="fa-solid fa-volume-high" aria-hidden="true"></i> Listen in English
+                                    </button>
+                                    <button id="playMarathiBtn" class="btn-voice btn-voice-marathi" aria-label="Play audio advisory in Marathi">
+                                        <i class="fa-solid fa-volume-high" aria-hidden="true"></i> मराठीत ऐका (Marathi)
+                                    </button>
+                                    <button id="stopVoiceBtn" class="btn-voice btn-voice-stop" style="display:none;" aria-label="Stop audio advisory">
+                                        <i class="fa-solid fa-circle-stop" aria-hidden="true"></i> Stop Audio
+                                    </button>
+                                </div>
+                                
+                                <!-- Equalizer sound wave animation -->
+                                <div id="audioWave" class="sound-wave-anim" style="display: none;" aria-label="Audio currently speaking">
+                                    <span class="sound-bar"></span>
+                                    <span class="sound-bar"></span>
+                                    <span class="sound-bar"></span>
+                                    <span class="sound-bar"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deception Vectors Breakdown (Psychological Profiling Bar) -->
+                    <div class="vectors-breakdown-box">
+                        <h4><i class="fa-solid fa-chart-simple" aria-hidden="true"></i> Indic Deception Vector Breakdown:</h4>
+                        <div class="vector-bars">
+                            <div class="vector-item">
+                                <div class="vector-label"><span>👮 Fake Authority Coercion</span><span id="vecAuthority">95%</span></div>
+                                <div class="vector-track"><div id="barAuthority" class="vector-fill" style="width: 95%; background: #DC2626;"></div></div>
+                            </div>
+                            <div class="vector-item">
+                                <div class="vector-label"><span>⏰ False Urgency & Panic</span><span id="vecUrgency">85%</span></div>
+                                <div class="vector-track"><div id="barUrgency" class="vector-fill" style="width: 85%; background: #F59E0B;"></div></div>
+                            </div>
+                            <div class="vector-item">
+                                <div class="vector-label"><span>🔒 Secrecy & Family Isolation Pressure</span><span id="vecIsolation">90%</span></div>
+                                <div class="vector-track"><div id="barIsolation" class="vector-fill" style="width: 90%; background: #9333EA;"></div></div>
+                            </div>
+                            <div class="vector-item">
+                                <div class="vector-label"><span>💸 Financial Siphoning / Escrow Lure</span><span id="vecFinancial">75%</span></div>
+                                <div class="vector-track"><div id="barFinancial" class="vector-fill" style="width: 75%; background: #2563EB;"></div></div>
+                            </div>
+                            <div class="vector-item">
+                                <div class="vector-label"><span>🔗 Malicious APK / Web Trap</span><span id="vecDigital">40%</span></div>
+                                <div class="vector-track"><div id="barDigital" class="vector-fill" style="width: 40%; background: #0D9488;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extracted OSINT Suspect Artifacts -->
+                    <div id="entitiesBox" class="entities-section">
+                        <h4><i class="fa-solid fa-fingerprint" aria-hidden="true"></i> Extracted Suspect Threat Artifacts (OSINT Intelligence):</h4>
+                        <div class="entities-grid">
+                            <div class="entity-item">
+                                <span class="entity-title"><i class="fa-solid fa-phone" aria-hidden="true"></i> Suspect Contacts:</span>
+                                <span id="extractedPhones" class="entity-val">None detected</span>
+                            </div>
+                            <div class="entity-item">
+                                <span class="entity-title"><i class="fa-solid fa-link" aria-hidden="true"></i> Phishing Links:</span>
+                                <span id="extractedUrls" class="entity-val">None detected</span>
+                            </div>
+                            <div class="entity-item">
+                                <span class="entity-title"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Remote Tools / APKs:</span>
+                                <span id="extractedApks" class="entity-val">None detected</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Identified Triggers Bar -->
+                    <div class="triggers-section">
+                        <h4><i class="fa-solid fa-brain" aria-hidden="true"></i> Identified Psychological Deception Triggers:</h4>
+                        <div id="triggersList" class="trigger-chips">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autonomous Multi-Agent Action Center -->
+                <div class="card agents-card">
+                    <div class="agent-nav-tabs" role="tablist" aria-label="ScamShield Autonomous Agents">
+                        <button class="agent-tab active" role="tab" id="tabBtnForensics" aria-selected="true" aria-controls="tab-forensics" data-tab="tab-forensics">
+                            <i class="fa-solid fa-microscope" aria-hidden="true"></i> Agent 1: Deception Forensics
+                        </button>
+                        <button class="agent-tab" role="tab" id="tabBtnElder" aria-selected="false" aria-controls="tab-elder" data-tab="tab-elder" tabindex="-1">
+                            <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i> Agent 2: Elder & Family Guardian
+                        </button>
+                        <button class="agent-tab" role="tab" id="tabBtnCybercrime" aria-selected="false" aria-controls="tab-cybercrime" data-tab="tab-cybercrime" tabindex="-1">
+                            <i class="fa-solid fa-file-shield" aria-hidden="true"></i> Agent 3: Cybercrime Report (1930)
+                        </button>
+                        <button class="agent-tab" role="tab" id="tabBtnAnalytics" aria-selected="false" aria-controls="tab-analytics" data-tab="tab-analytics" tabindex="-1">
+                            <i class="fa-solid fa-chart-pie" aria-hidden="true"></i> ML Model & Threat Analytics
+                        </button>
+                    </div>
+
+                    <!-- Tab 1: Deception Forensics -->
+                    <div id="tab-forensics" class="agent-tab-content active" role="tabpanel" aria-labelledby="tabBtnForensics">
+                        <div class="agent-desc-box">
+                            <h4><i class="fa-solid fa-user-secret" aria-hidden="true"></i> Agent 1: Psychological Deception Analysis</h4>
+                            <p>Dissects how social engineering algorithms exploit fear, cognitive overload, and urgency to bypass the victim's rational judgment.</p>
+                        </div>
+                        <div class="forensics-breakdown" id="forensicsContent">
+                            <!-- Dynamically filled -->
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Elder & Family Guardian -->
+                    <div id="tab-elder" class="agent-tab-content" role="tabpanel" aria-labelledby="tabBtnElder">
+                        <div class="agent-desc-box">
+                            <h4><i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i> Agent 2: Elder-First Reassurance & Caregiver Notification</h4>
+                            <p>Translates complex threat patterns into simple, comforting instructions in Hindi, English, and Marathi, and dispatches automated alerts to designated family caregivers.</p>
+                        </div>
+
+                        <!-- Trilingual Advice Grid -->
+                        <div class="elder-bilingual-grid elder-trilingual-grid">
+                            <div class="elder-card hindi-card">
+                                <h5><i class="fa-solid fa-om" aria-hidden="true"></i> वरिष्ठ नागरिकों के लिए सलाह (Hindi)</h5>
+                                <ol class="elder-steps" id="elderStepsHindi">
+                                    <!-- Dynamically populated with step counters -->
+                                </ol>
+                            </div>
+                            <div class="elder-card english-card">
+                                <h5><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Actionable Safety Rules (English)</h5>
+                                <ol class="elder-steps" id="elderStepsEnglish">
+                                    <!-- Dynamically populated with step counters -->
+                                </ol>
+                            </div>
+                            <div class="elder-card marathi-card">
+                                <h5><i class="fa-solid fa-flag" aria-hidden="true"></i> ज्येष्ठ नागरिकांसाठी मार्गदर्शक (Marathi)</h5>
+                                <ol class="elder-steps" id="elderStepsMarathi">
+                                    <!-- Dynamically populated with step counters -->
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="family-alert-box">
+                            <div class="family-alert-header">
+                                <span><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Automated Caregiver Emergency Alert Dispatch</span>
+                                <div class="alert-actions">
+                                    <a id="whatsappShareBtn" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" title="Open WhatsApp with pre-filled alert message">
+                                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send on WhatsApp
+                                    </a>
+                                    <button id="copyAlertBtn" class="btn-copy"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy Message</button>
+                                </div>
+                            </div>
+                            <pre id="familyAlertText" class="alert-code" tabindex="0"></pre>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Cybercrime Report Drafter -->
+                    <div id="tab-cybercrime" class="agent-tab-content" role="tabpanel" aria-labelledby="tabBtnCybercrime">
+                        <div class="agent-desc-box">
+                            <h4><i class="fa-solid fa-landmark" aria-hidden="true"></i> Agent 3: National Cyber Crime Portal Incident Drafter</h4>
+                            <p>Automatically compiles an evidence-backed formal legal draft formatted for direct filing at <strong>cybercrime.gov.in</strong> or reporting to the <strong>1930 National Cyber Fraud Helpline</strong>.</p>
+                        </div>
+
+                        <div class="complaint-box">
+                            <div class="complaint-header">
+                                <span><i class="fa-solid fa-scroll" aria-hidden="true"></i> Formal Incident Complaint Draft (Sections 419/420 IPC & 66D IT Act)</span>
+                                <div class="complaint-actions">
+                                    <button id="copyComplaintBtn" class="btn-copy"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy Text</button>
+                                    <button id="downloadComplaintBtn" class="btn-copy btn-download"><i class="fa-solid fa-download" aria-hidden="true"></i> Download .txt</button>
+                                    <button id="printComplaintBtn" class="btn-copy btn-print" title="Print formal incident complaint for police or bank"><i class="fa-solid fa-print" aria-hidden="true"></i> Print Official Report</button>
+                                </div>
+                            </div>
+                            <textarea id="complaintText" readonly rows="11" aria-label="Drafted legal complaint text"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Scam Threat Analytics & Database -->
+                    <div id="tab-analytics" class="agent-tab-content" role="tabpanel" aria-labelledby="tabBtnAnalytics">
+                        <div class="agent-desc-box">
+                            <h4><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Indic ML Model Metrics & National Cyber Threat Matrix</h4>
+                            <p>Live empirical breakdown from the trained ScamShield NLP model and cyber crime intelligence across India.</p>
+                        </div>
+                        
+                        <!-- Dynamic Live Model Metrics Bar -->
+                        <div class="model-stats-banner">
+                            <div class="mstat-item">
+                                <span class="mstat-label">Corpus Size</span>
+                                <span class="mstat-val" id="statCorpus">188 Samples</span>
+                            </div>
+                            <div class="mstat-item">
+                                <span class="mstat-label">5-Fold CV Accuracy</span>
+                                <span class="mstat-val highlight" id="statCv">96.27%</span>
+                            </div>
+                            <div class="mstat-item">
+                                <span class="mstat-label">Train Precision / Recall</span>
+                                <span class="mstat-val" id="statPrecision">1.00 / 1.00</span>
+                            </div>
+                            <div class="mstat-item">
+                                <span class="mstat-label">Feature Union</span>
+                                <span class="mstat-val">Word + Char N-Grams</span>
+                            </div>
+                        </div>
+
+                        <div class="analytics-grid">
+                            <div class="analytics-stat-card">
+                                <span class="stat-num">36%</span>
+                                <span class="stat-name">Digital Arrest Extortion</span>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 36%; background: #DC2626;"></div></div>
+                            </div>
+                            <div class="analytics-stat-card">
+                                <span class="stat-num">24%</span>
+                                <span class="stat-name">Utility Power Cut Threats</span>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 24%; background: #F59E0B;"></div></div>
+                            </div>
+                            <div class="analytics-stat-card">
+                                <span class="stat-num">20%</span>
+                                <span class="stat-name">Bank & YONO KYC Blocks</span>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 20%; background: #3B82F6;"></div></div>
+                            </div>
+                            <div class="analytics-stat-card">
+                                <span class="stat-num">12%</span>
+                                <span class="stat-name">Telegram Task & Work Schemes</span>
+                                <div class="stat-bar"><div class="stat-fill" style="width: 12%; background: #8B5CF6;"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="legal-provisions-box">
+                            <h5><i class="fa-solid fa-gavel" aria-hidden="true"></i> Statutory Legal Penalties for Extortionists</h5>
+                            <p>• <strong>Section 419 IPC:</strong> Cheating by personation (Up to 3 years imprisonment).<br/>
+                            • <strong>Section 420 IPC:</strong> Cheating and dishonestly inducing delivery of property (Up to 7 years imprisonment + fine).<br/>
+                            • <strong>Section 66D IT Act:</strong> Punishment for cheating by personation by using computer resource (Up to 3 years + ₹1 Lakh fine).<br/>
+                            • <strong>Section 384/385 IPC:</strong> Extortion by putting person in fear of injury or legal persecution.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================
+             VIEW 2: VIRTUAL CALL INTERCEPTOR (Interactive Live Simulation)
+             =================================================================== -->
+        <div id="viewCallInterceptor" class="view-panel" style="display: none;">
+            <section class="card call-simulator-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Real-Time Voice Call Interceptor Simulator</h2>
+                    <span class="pill-info">Simulated Digital Arrest Police Call</span>
+                </div>
+                <p class="card-desc">Experience how ScamShield acts as an AI background guard during incoming calls, transcribing voice audio in real time and warning the elder before financial fraud occurs.</p>
+
+                <div class="simulator-layout">
+                    <!-- Virtual Phone Screen -->
+                    <div class="phone-frame">
+                        <div class="phone-speaker"></div>
+                        <div class="phone-screen">
+                            <div class="call-top-bar">
+                                <span><i class="fa-solid fa-lock" aria-hidden="true"></i> Encrypted VoIP Call</span>
+                                <span>HD Voice</span>
+                            </div>
+
+                            <div class="caller-avatar-box">
+                                <div class="caller-avatar" id="callerAvatar">
+                                    <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
+                                </div>
+                                <h3 class="caller-name" id="simCallerName">DCP Mumbai Crime Branch</h3>
+                                <p class="caller-number" id="simCallerNumber">+91 98201 92831</p>
+                                <span class="caller-tag">🚨 Suspicious Spoofed VoIP</span>
+                            </div>
+
+                            <div class="call-timer-box">
+                                <span id="callTimer" class="call-timer">00:00</span>
+                                <div id="callWaveRing" class="call-wave-rings" style="display: none;">
+                                    <span class="cwave"></span><span class="cwave"></span><span class="cwave"></span>
+                                </div>
+                            </div>
+
+                            <!-- Live Interceptor Warning Ribbon inside Phone -->
+                            <div id="phoneInterventionBanner" class="phone-intercept-banner" style="display: none;">
+                                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                                <span>SCAMSHIELD INTERCEPT: FAKE POLICE EXTORTION DETECTED! HANG UP NOW.</span>
+                            </div>
+
+                            <!-- Phone Action Buttons -->
+                            <div class="phone-actions">
+                                <button id="startCallSimBtn" class="btn-phone btn-call-accept" title="Start simulation of incoming call">
+                                    <i class="fa-solid fa-phone" aria-hidden="true"></i> <span>Simulate Call</span>
+                                </button>
+                                <button id="hangupCallSimBtn" class="btn-phone btn-call-decline" title="Hang up and disconnect call" style="display:none;">
+                                    <i class="fa-solid fa-phone-slash" aria-hidden="true"></i> <span>Hang Up</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Transcription & AI Threat Feed -->
+                    <div class="simulation-feed">
+                        <div class="feed-header">
+                            <h4><i class="fa-solid fa-satellite" aria-hidden="true"></i> Live Audio Stream Transcription & Threat Telemetry</h4>
+                            <span id="simStatusPill" class="status-pill status-ready">Ready for simulation</span>
+                        </div>
+
+                        <div id="simTranscriptFeed" class="transcript-scroll">
+                            <div class="feed-placeholder">
+                                <i class="fa-solid fa-headphones" aria-hidden="true"></i>
+                                <p>Click <strong>"Simulate Call"</strong> to trigger an incoming spoofed Digital Arrest interrogation call and witness ScamShield's live NLP interception in action.</p>
+                            </div>
+                        </div>
+
+                        <div class="feed-legend">
+                            <span><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Uses Indic Lexicon & Voice Pattern Interception to protect senior citizens.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================
+             VIEW 3: CYBER THREAT OSINT LOOKUP TOOL
+             =================================================================== -->
+        <div id="viewThreatLookup" class="view-panel" style="display: none;">
+            <section class="card threat-lookup-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-shield-virus" aria-hidden="true"></i> Indian Cyber Threat OSINT Intelligence Lookup</h2>
+                    <span class="pill-info">Chakshu & I4C National Database</span>
+                </div>
+                <p class="card-desc">Verify suspicious mobile numbers, WhatsApp links, bank APKs, or UPI VPAs against ScamShield's national cyber fraud blacklist repository.</p>
+
+                <!-- Search Input Bar -->
+                <div class="lookup-search-bar">
+                    <div class="lookup-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                        <input type="text" id="osintSearchInput" placeholder="Enter phone number (e.g. 9820192831), link (sbi-kyc-portal.net), or 1930..." aria-label="OSINT Search Input">
+                    </div>
+                    <button id="osintSearchBtn" class="btn btn-primary"><i class="fa-solid fa-search" aria-hidden="true"></i> Verify Threat Intel</button>
+                </div>
+
+                <!-- Quick Query Badges -->
+                <div class="quick-lookup-tags">
+                    <span class="ql-label">Frequently Reported Artifacts (Click to check):</span>
+                    <button class="btn-ql" data-q="9820192831">📞 9820192831 (Digital Arrest)</button>
+                    <button class="btn-ql" data-q="9876543210">⚡ 9876543210 (Electricity Scam)</button>
+                    <button class="btn-ql" data-q="sbi-kyc-portal.net">🔗 sbi-kyc-portal.net (Bank Phish)</button>
+                    <button class="btn-ql" data-q="phonepe-rewards.club">💸 phonepe-rewards.club (UPI Trap)</button>
+                    <button class="btn-ql" data-q="1930">✅ 1930 (Official Cyber Helpline)</button>
+                </div>
+
+                <!-- Lookup Result Box -->
+                <div id="osintResultBox" class="osint-result-container" style="display: none;">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================
+             VIEW 4: ELDER DEFENSE PRACTICE LAB (Interactive Training Quiz)
+             =================================================================== -->
+        <div id="viewPracticeLab" class="view-panel" style="display: none;">
+            <section class="card practice-lab-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Senior Citizen Cyber Defense Training Lab</h2>
+                    <span class="pill-voice"><i class="fa-solid fa-award" aria-hidden="true"></i> Interactive Awareness</span>
+                </div>
+                <p class="card-desc">Test your knowledge with real-world scenarios designed to empower elders against deceptive phone calls, power cut threats, and UPI traps.</p>
+
+                <div class="quiz-container">
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-track">
+                            <div id="quizProgressFill" class="quiz-progress-fill" style="width: 20%;"></div>
+                        </div>
+                        <div class="quiz-progress-text">
+                            <span id="quizQuestionCount">Question 1 of 5</span>
+                            <span id="quizScoreText">Score: 0 / 5</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Card -->
+                    <div class="quiz-card" id="quizCard">
+                        <span class="quiz-scenario-tag" id="quizScenarioTag">Scenario 1: WhatsApp Video Call</span>
+                        <h3 class="quiz-question-title" id="quizQuestionText">Loading question...</h3>
+
+                        <div class="quiz-options-list" id="quizOptionsList">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <!-- Feedback Explanation Box -->
+                        <div id="quizExplanationBox" class="quiz-explanation" style="display: none;">
+                            <h4 id="quizExplanationTitle"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Correct Action!</h4>
+                            <p id="quizExplanationText">Explanation details here...</p>
+                            <button id="quizNextBtn" class="btn btn-primary"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Next Question</button>
+                        </div>
+                    </div>
+
+                    <!-- Certificate Box on Completion -->
+                    <div id="quizCertificateBox" class="certificate-card" style="display: none;">
+                        <div class="cert-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                        <h3>Certified Cyber-Aware Citizen</h3>
+                        <p>Congratulations! You have completed the <strong>ScamShield Senior Defense Practice Lab</strong> with an excellent score.</p>
+                        <div class="cert-score-badge" id="certScoreBadge">Score: 5 / 5 (100%)</div>
+                        <p class="cert-note">You are now equipped to identify Digital Arrest impersonations, night-time power cuts, and UPI traps!</p>
+                        <button id="restartQuizBtn" class="btn btn-secondary"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Retake Practice Quiz</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ===================================================================
+             VIEW 5: ASK SCAMSHIELD AI COMPANION (Elder Reassurance Q&A Chatbot)
+             =================================================================== -->
+        <div id="viewAiCompanion" class="view-panel" style="display: none;">
+            <section class="card companion-card">
+                <div class="card-header">
+                    <div class="companion-title-group">
+                        <div class="companion-avatar"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></div>
+                        <div>
+                            <h2><i class="fa-solid fa-comments" aria-hidden="true"></i> Ask ScamShield AI Companion (ज्येष्ठ नागरिक सल्लागार)</h2>
+                            <p class="companion-sub">Ask any questions about suspicious calls, messages, or bank notices in Hindi, Marathi, or English.</p>
+                        </div>
+                    </div>
+                    <div class="companion-engine-badge">
+                        <span id="chatEngineBadge" class="pill-engine"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Local Indic Knowledge Base</span>
+                    </div>
+                </div>
+
+                <!-- Suggested Quick Elder Questions -->
+                <div class="quick-questions-box">
+                    <span class="qq-label"><i class="fa-regular fa-comments" aria-hidden="true"></i> Frequently Asked Questions by Seniors (Click to ask):</span>
+                    <div class="qq-chips">
+                        <button class="btn-qq" data-question="Can police or CBI arrest me on WhatsApp or Skype video call?">👮 Can police arrest me on video call?</button>
+                        <button class="btn-qq" data-question="I received a message saying electricity will be cut at 9:30 PM. What should I do?">⚡ Electricity cut threat tonight?</button>
+                        <button class="btn-qq" data-question="Someone is asking me to enter my UPI PIN to receive a refund. Is this safe?">💸 Enter UPI PIN to receive refund?</button>
+                        <button class="btn-qq" data-question="What is the 1930 helpline and how does it help if money is lost?">📞 What is 1930 helpline?</button>
+                        <button class="btn-qq" data-question="The caller told me to lock my room and not tell my family. Why?">🔒 Why are they demanding secrecy?</button>
+                        <button class="btn-qq" data-question="The caller asked me to download AnyDesk or TeamViewer on my phone. What is this?">⚠️ Caller asked to install AnyDesk?</button>
+                    </div>
+                </div>
+
+                <!-- Chat Messages Scroll Stream -->
+                <div class="chat-container">
+                    <div class="chat-stream" id="chatStream" role="log" aria-live="polite">
+                        <div class="chat-msg chat-msg-bot">
+                            <div class="msg-avatar"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                            <div class="msg-bubble">
+                                <p><strong>Namaste! I am your ScamShield Elder Guardian.</strong></p>
+                                <p>I am here to protect you from phone fraud, fake police threats, and banking scams. You can ask me any question in Hindi, English, Hinglish, or Marathi, or choose one of the common questions above.</p>
+                                <span class="msg-time">Active & Ready</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input Area with Dictation & Send -->
+                    <div class="chat-input-row">
+                        <div class="chat-input-wrapper">
+                            <input type="text" id="chatInput" placeholder="Ask your question here (e.g. 'Can CBI arrest on Skype?', 'Mujhe bijli cut ka SMS aaya hai...')" aria-label="Ask Elder Guardian Chat Input">
+                            <button id="chatMicBtn" class="btn-chat-tool" title="Dictate question by voice (Hindi/English/Marathi)" aria-label="Voice input for chat">
+                                <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <button id="chatSendBtn" class="btn btn-primary btn-chat-send">
+                            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span>Ask Advisor</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Project Specifications & Architecture Footer -->
+        <section class="card specs-card" aria-labelledby="specsHeading">
+            <div class="card-header">
+                <h3 id="specsHeading"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> ScamShield Technical Architecture & Internship Deliverables</h3>
+            </div>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <strong><i class="fa-solid fa-code" aria-hidden="true"></i> Tech Stack:</strong>
+                    <span>HTML5, CSS3, JavaScript (ES6+), Python Flask</span>
+                </div>
+                <div class="spec-item">
+                    <strong><i class="fa-solid fa-brain" aria-hidden="true"></i> Machine Learning:</strong>
+                    <span>Hybrid Word + Char-Ngram TF-IDF + Calibrated Logistic Regression (188 Indic samples, 96.27% CV)</span>
+                </div>
+                <div class="spec-item">
+                    <strong><i class="fa-solid fa-robot" aria-hidden="true"></i> Multi-Agent Framework:</strong>
+                    <span>3-Agent Swarm (Forensics, Elder Reassurance, Cybercrime Incident Drafter)</span>
+                </div>
+                <div class="spec-item">
+                    <strong><i class="fa-solid fa-cloud-bolt" aria-hidden="true"></i> Dual-Engine AI:</strong>
+                    <span>Local Indic NLP (96.27% CV) + Groq Cloud LPU (Qwen / Whisper v3)</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Elder Panic Emergency Modal -->
+    <div id="panicModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modalTitle"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ELDER EMERGENCY ASSISTANCE TRIGGERED</h3>
+                <button id="closeModalBtn" class="btn-close-modal" aria-label="Close emergency alert dialog">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="siren-icon" aria-hidden="true"><i class="fa-solid fa-bell fa-shake"></i></div>
+                <h4>Emergency Alert Sent to Designated Caregivers</h4>
+                <p>Your emergency distress alert and GPS device status has been logged.</p>
+                <div class="emergency-numbers">
+                    <div class="em-item">
+                        <span class="em-name">National Cybercrime Helpline:</span>
+                        <a href="tel:1930" class="em-num"><i class="fa-solid fa-phone" aria-hidden="true"></i> Dial 1930</a>
+                    </div>
+                    <div class="em-item">
+                        <span class="em-name">Police Emergency Control:</span>
+                        <a href="tel:112" class="em-num"><i class="fa-solid fa-phone" aria-hidden="true"></i> Dial 112</a>
+                    </div>
+                </div>
+                <div class="modal-tips">
+                    <p><strong>Remember:</strong> Police and CBI NEVER arrest anyone via video call. Do not transfer any money!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="dismissModalBtn" class="btn btn-secondary">I Am Safe Now (Dismiss)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groq AI Settings Modal -->
+    <div id="groqModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="groqModalTitle" style="display: none;">
+        <div class="modal-box groq-modal-box">
+            <div class="modal-header groq-modal-header">
+                <h3 id="groqModalTitle"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Groq Cloud AI Engine Configuration</h3>
+                <button id="closeGroqModalBtn" class="btn-close-modal" aria-label="Close Groq settings dialog">&times;</button>
+            </div>
+            <div class="modal-body groq-modal-body">
+                <div class="groq-intro">
+                    <p>Supercharge ScamShield AI with <strong>Groq Cloud LPU Acceleration</strong> for ultra-fast Llama 3.3 70B reasoning and Whisper Large v3 voice transcription.</p>
+                    <p class="groq-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> If no key is entered, ScamShield continues running 100% locally on its trained Indic NLP model (96.27% accuracy).</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="groqApiKeyInput"><strong>Groq API Key (starts with <code>gsk_...</code>):</strong></label>
+                    <div class="groq-key-wrapper">
+                        <input type="password" id="groqApiKeyInput" placeholder="Enter your Groq API Key (e.g. gsk_...)" autocomplete="off">
+                        <button id="toggleGroqKeyVisibility" type="button" class="btn-toggle-vis" title="Toggle key visibility">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <span class="input-hint">Your key is stored securely in your local <code>.env</code> file. Get a free key at <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">console.groq.com/keys <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i></a>.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="groqModelSelect"><strong>Select Groq AI Model:</strong></label>
+                    <select id="groqModelSelect" class="groq-select">
+                        <option value="qwen/qwen3.8-27b" selected>Qwen 3.8 27B (High-Speed Multilingual & Indic Reasoning - Recommended)</option>
+                        <option value="openai/gpt-oss-120b">OpenAI GPT-OSS 120B (High Capability)</option>
+                        <option value="openai/gpt-oss-20b">OpenAI GPT-OSS 20B (Ultra-Low Latency)</option>
+                    </select>
+                </div>
+
+                <div id="groqStatusFeedback" class="groq-feedback-box" style="display: none;"></div>
+            </div>
+            <div class="modal-footer groq-modal-footer">
+                <button id="disconnectGroqBtn" class="btn btn-secondary"><i class="fa-solid fa-plug-circle-xmark" aria-hidden="true"></i> Revert to Offline Local ML</button>
+                <button id="saveGroqBtn" class="btn btn-primary"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Test & Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Official Printable Legal Incident Report (Hidden until Print is triggered) -->
+    <div id="printableReport" class="printable-report" style="display: none;">
+        <div class="report-header">
+            <h2>GOVERNMENT OF INDIA - MINISTRY OF HOME AFFAIRS</h2>
+            <h3>NATIONAL CYBER CRIME REPORTING PORTAL (cybercrime.gov.in)</h3>
+            <p>Formal Incident Investigation Docket | Helpline: 1930</p>
+        </div>
+        <hr class="report-divider">
+        <div class="report-meta">
+            <div><strong>Reference ID:</strong> <span id="printRefId">SCAMSHIELD-IN-20261028</span></div>
+            <div><strong>Date & Timestamp:</strong> <span id="printTimestamp">2026-10-28 18:00:00</span></div>
+            <div><strong>Filing Status:</strong> Formal Pre-Complaint Intake</div>
+            <div><strong>Legal Class:</strong> Cyber Financial Extortion & Identity Impersonation</div>
+        </div>
+        <hr class="report-divider">
+        <div class="report-section">
+            <h4>1. INCIDENT & MODUS OPERANDI SUMMARY</h4>
+            <p><strong>Threat Category:</strong> <span id="printCategory">Digital Arrest Extortion</span></p>
+            <p><strong>Assessed Risk Probability:</strong> <span id="printRisk">96.8%</span></p>
+        </div>
+        <div class="report-section">
+            <h4>2. EXTRACTED SUSPECT ARTIFACTS (OSINT EVIDENCE)</h4>
+            <p><strong>Suspect Mobile Contacts:</strong> <span id="printPhones">None detected</span></p>
+            <p><strong>Phishing Web Links:</strong> <span id="printUrls">None detected</span></p>
+            <p><strong>Remote Access / Malicious APKs:</strong> <span id="printApks">None detected</span></p>
+        </div>
+        <div class="report-section">
+            <h4>3. STATUTORY LEGAL CITATIONS FOR COGNIZANCE</h4>
+            <p>• <strong>Section 419 IPC:</strong> Cheating by personation.</p>
+            <p>• <strong>Section 420 IPC:</strong> Cheating and dishonestly inducing delivery of property.</p>
+            <p>• <strong>Section 66D IT Act 2000:</strong> Punishment for cheating by personation using computer resource.</p>
+            <p>• <strong>Section 384/385 IPC:</strong> Extortion by placing victims under fear of injury or illegal detention.</p>
+        </div>
+        <div class="report-section">
+            <h4>4. PRIMARY EVIDENCE TRANSCRIPT LOGGED</h4>
+            <pre id="printEvidenceText" class="print-evidence"></pre>
+        </div>
+        <div class="report-footer">
+            <p>Generated by ScamShield AI Elder Cyber Defense System | Verified with Indic NLP Engine</p>
+        </div>
+    </div>
+
+    <!-- Floating Toast Feedback Notification Container -->
+    <div id="toastContainer" class="toast-container" role="status" aria-live="polite"></div>
+
+    <!-- Footer -->
+    <footer class="app-footer" role="contentinfo">
+        <div class="container footer-content">
+            <p><strong>ScamShield AI</strong> — Capstone Project for <strong>IBM SkillsBuild for Academia / AICTE Internship</strong> (Deliverable 2).</p>
+            <p>Dedicated to UN SDG 16 (Peace, Justice & Strong Institutions) & SDG 10 (Reduced Inequalities).</p>
+        </div>
+    </footer>
+
+    <!-- App Scripts -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
